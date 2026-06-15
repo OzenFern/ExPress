@@ -1,0 +1,24 @@
+{
+  "name": "blog-post-website",
+  "version": "1.0.0",
+  "description": "Built using node, express & ejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "Ozenf",
+  "license": "ISC",
+  "type": "module",
+  "entry": "app.js",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "morgan": "^1.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
