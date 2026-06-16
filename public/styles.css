@@ -27,4 +27,8 @@ h6,
   color: var(--bs-body-bg);
 }
 
+.no-resize {
+  resize: none;
+}
+
 /* Add background animations here */
