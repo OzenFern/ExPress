@@ -1,0 +1,30 @@
+:root {
+  --bs-body-font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.nav-brand,
+.offcanvas-title {
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar-brand {
+  font-weight: bolder;
+}
+
+.btn-outline-theme {
+  color: var(--bs-body-color);
+  border-color: var(--bs-body-color);
+}
+
+.btn-outline-theme:hover {
+  background-color: var(--bs-body-color);
+  color: var(--bs-body-bg);
+}
+
+/* Add background animations here */
