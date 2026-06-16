@@ -17,6 +17,8 @@ class Blog {
 }
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"));
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:3000`);
@@ -29,6 +31,20 @@ app.get("/", (req, res) => {
 app.get("/posts", (req, res) => {
   // Pass some dummy data
   res.render("posts.ejs", {
+    blogs: posts,
+  });
+});
+
+app.get("/posts/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+app.post("/post/create", (req, res) => {
+  const blog = req.body;
+  posts.push(new Blog(blog.title, blog.blurb, blog.content));
+  res.render("posts.ejs", {
+    title: blog.title,
+    action: "create",
     blogs: posts,
   });
 });
