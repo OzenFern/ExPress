@@ -1,0 +1,41 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container my-5">
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    <h1 class="display-4 fw-bold">Read. Write. ExPress.</h1>
+    <p class="col-lg-8 mx-auto fs-5 text-muted">
+      A fast and minimal blogging platform built for simplicity. No clutter, no
+      complexity just pure blogging.
+    </p>
+    <div class="d-inline-flex gap-2 mb-5">
+      <a
+        class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill"
+        href="/posts"
+      >
+        Read Blogs
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          class="bi bi-arrow-right-short"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"
+          />
+        </svg>
+      </a>
+      <a
+        class="btn btn-outline-theme btn-lg px-4 rounded-pill"
+        href="/posts/new"
+      >
+        Create Blog
+      </a>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
