@@ -139,7 +139,7 @@ app.post("/posts/:id/edit", loadPost, (req, res) => {
 });
 
 // Handles deletion of a post
-app.get("/posts/:id/delete", loadPost, (req, res) => {
+app.post("/posts/:id/delete", loadPost, (req, res) => {
   deletePost(req.post.id);
 
   redirectWithMessage(res, "deleted", req.post.title);
