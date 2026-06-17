@@ -95,6 +95,11 @@ app.get("/posts", (req, res) => {
   });
 });
 
+// Displays about page
+app.get("/about", (req, res) => {
+  res.render("about.ejs");
+});
+
 // Directs user to a form to create new post
 app.get("/posts/new", (req, res) => {
   res.render("new.ejs");
