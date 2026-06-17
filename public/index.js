@@ -72,9 +72,7 @@ function setValidity(el, isValid) {
 function validateTitle() {
   const len = title.value.trim().length;
   const valid = len >= 3 && len <= 100;
-  setTimeout(() => {
-    setValidity(title, valid);
-  }, 1000);
+  setValidity(title, valid);
 
   return valid;
 }
@@ -82,10 +80,7 @@ function validateTitle() {
 function validateBlurb() {
   const len = blurb.value.trim().length;
   const valid = len >= 10 && len <= 180;
-
-  setTimeout(() => {
-    setValidity(blurb, valid);
-  }, 5000);
+  setValidity(blurb, valid);
   return valid;
 }
 
@@ -114,8 +109,8 @@ blurb.addEventListener("input", () => {
 });
 content.addEventListener("input", () => {
   updateCounter(content, contentCount);
+  validateContent();
 });
-content.addEventListener("blur", validateContent);
 
 // Disable submit if input is not valid
 form.addEventListener("submit", (e) => {
