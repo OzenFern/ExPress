@@ -72,8 +72,8 @@ function setValidity(el, isValid) {
 function validateTitle() {
   const len = title.value.trim().length;
   const valid = len >= 3 && len <= 100;
-  setValidity(title, valid);
 
+  setValidity(title, valid);
   return valid;
 }
 
