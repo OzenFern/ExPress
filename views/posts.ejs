@@ -68,7 +68,11 @@
         <div class="mt-auto d-flex flex-column flex-wrap flex-sm-row gap-3">
         <a href="/posts/<%= post.id %>" class="btn btn-primary flex-fill">View Post</a>
         <a href="/posts/<%= post.id %>/edit" class="btn btn-outline-info flex-fill">Edit Post</a>
-        <a href="/posts/<%= post.id %>/delete" class="btn btn-outline-danger flex-fill">Delete Post</a>
+        <%- include("partials/delete-modal.ejs", {
+            post,
+            buttonClass: 'flex-fill',
+        }) %>
+
         </div>
     </div>
     </div>

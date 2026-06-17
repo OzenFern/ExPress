@@ -36,9 +36,8 @@
         Edit Post
       </a>
 
-      <a href="/posts/<%= post.id %>/delete" class="btn btn-outline-danger">
-        Delete Post
-      </a>
+      <%- include("partials/delete-modal.ejs", {post, buttonClass: null})
+      %>
     </div>
   </article>
 </div>
