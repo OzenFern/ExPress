@@ -1,0 +1,83 @@
+<div class="container py-4">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form
+        action=<%= action %>
+        method="POST"
+        class="needs-validation"
+        novalidate
+        id="post-form"
+      >
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label fw-bold"
+            >Post Title</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="ExPressive title"
+            name="title"
+            required
+            autofocus
+            minlength="3"
+            maxlength="100"
+            value="<%= post?.title || '' %>"
+          />
+          <div class="form-text text-end">
+            <span id="title-count">0</span>/100 characters
+          </div>
+          <div class="invalid-feedback">
+            Title must be 3-100 characters long.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label fw-bold"
+            >Short Description</label
+          >
+          <textarea
+            class="form-control no-resize"
+            id="exampleFormControlTextarea1"
+            rows="2"
+            required
+            minlength="10"
+            maxlength="180"
+            name="blurb"
+            placeholder="A brief summary shown on the posts page"
+          ><%= post?.blurb || '' %></textarea>
+          <div class="form-text text-end">
+            <span id="blurb-count">0</span>/180 characters
+          </div>
+          <div class="invalid-feedback">
+            Description must be 10-180 characters long.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label fw-bold"
+            >Post Content</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea2"
+            rows="10"
+            required
+            name="content"
+            placeholder="Write the full content of your blog post here"
+            minlength="30"
+          ><%= post?.content || '' %></textarea>
+          <div class="form-text text-end">
+            <span id="content-count">0</span> characters
+          </div>
+          <div class="invalid-feedback">
+            Content must be at least 30 characters long.
+          </div>
+        </div>
+        <div class="mb-3">
+          <button class="btn btn-primary" type="submit" id="publish">
+            <%= buttonText %>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
