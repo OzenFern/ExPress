@@ -1,15 +1,15 @@
 <button
   type="button"
-  class="btn <%= buttonClass %>"
+  class="btn btn-outline-danger <%= buttonClass ?? '' %>"
   data-bs-toggle="modal"
-  data-bs-target="#<%= modalId %>"
+  data-bs-target="#deletePost<%= post.id %>"
 >
-  <%= buttonText %>
+  Delete Post
 </button>
 
 <div
   class="modal fade"
-  id="<%= modalId %>"
+  id="deletePost<%= post.id %>"
   tabindex="-1"
   aria-hidden="true"
   data-bs-backdrop="static"
@@ -18,7 +18,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><%= title %></h5>
+        <h5 class="modal-title text-danger">Delete Post</h5>
 
         <button
           type="button"
@@ -27,17 +27,18 @@
         ></button>
       </div>
 
-      <div class="modal-body"><%= message %></div>
+      <div class="modal-body">
+        Are you sure you want to delete "<strong><%= post.title %></strong>"
+        post? This action cannot be undone.
+      </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cancel
         </button>
 
-        <form action="<%= action %>" method="<%= method || 'POST' %>">
-          <button type="submit" class="btn <%= confirmButtonClass %>">
-            <%= confirmText %>
-          </button>
+        <form action="/posts/<%= post.id %>/delete" method="POST">
+          <button type="submit" class="btn btn-danger">Delete</button>
         </form>
       </div>
     </div>
