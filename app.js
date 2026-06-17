@@ -152,33 +152,47 @@ app.use((req, res) => {
 
 // Default posts
 createPost({
-  title: "Welcome to My Blog",
-  blurb: "A quick intro to what this blog is about",
-  content: `This is the first post on the blog. It serves as a welcome message and an introduction to the platform.
+  title: "Welcome to ExPress",
+  blurb: "Share your thoughts, ideas, and stories with the world.",
+  content: `Let your curiosity run free!
 
-Here you'll find posts about web development, backend engineering, and personal learning notes as I build projects.
+This platform is built for one simple purpose: giving people a place to write and share what matters to them.
 
-Stay tuned for more updates!`,
+Whether it's a project you're working on, a lesson you've learned, an opinion you want to discuss, or simply a thought worth recording, ExPress gives you a space to put it into words.
+
+Feel free to create, edit, and delete posts as you explore the platform. This post is here to help you get started.
+
+Happy writing!`,
 });
 
 createPost({
-  title: "Understanding Express.js Basics",
-  blurb: "A beginner-friendly overview of Express.js concepts",
-  content: `Express.js is a lightweight web framework for Node.js that helps you build server-side applications quickly.
+  title: "Why Writing Things Down Matters",
+  blurb: "A quick thought on turning ideas into something tangible.",
+  content: `Ideas are fragile.
 
-In this post, we explore routing, middleware, and how requests flow through an Express app.
+A great idea can appear during a walk, while studying, or in the middle of a conversation. The problem is that ideas disappear just as quickly as they arrive.
 
-By the end, you'll understand how to structure a simple backend using Express.`,
+Writing helps transform thoughts into something more permanent. It forces us to organize our thinking, identify gaps in our understanding, and communicate more clearly.
+
+You don't need to be a professional writer to benefit from writing. Sometimes a few paragraphs are enough to clarify an idea that has been floating around in your head for days.
+
+The next time inspiration strikes, consider writing it down before it slips away.`,
 });
 
 createPost({
-  title: "Why I’m Building This Blog",
-  blurb: "Thoughts on learning by building projects",
-  content: `Building projects is one of the best ways to learn programming.
+  title: "My First Project Reflection",
+  blurb: "Lessons learned while building a small web application.",
+  content: `Every project teaches something new.
 
-This blog exists as a hands-on project to practice backend development, routing, and templating with EJS.
+When starting a project, it's easy to focus only on the finished product. In reality, most of the learning happens during the process itself.
 
-Each feature added here represents a small step toward understanding full-stack development better.`,
+You learn how to debug problems, read documentation, structure your code, and make decisions when there isn't an obvious answer.
+
+Progress can feel slow at times, but every challenge solved becomes part of your experience.
+
+Small projects may not look impressive at first glance, but they often provide the foundation for much larger ones in the future.
+
+The key is to keep building.`,
 });
 
 // Sets up server at specified port
