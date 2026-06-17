@@ -1,7 +1,7 @@
 {
   "name": "ExPress",
   "version": "1.0.0",
-  "description": "An interactive website which has CRUD operations on blogs",
+  "description": "A responsive posting platform built with Express.js, EJS, and Bootstrap.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "Ozenf",
+  "author": "Ozen Fernandes",
   "license": "ISC",
   "type": "module",
   "entry": "app.js",
