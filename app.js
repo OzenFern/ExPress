@@ -4,11 +4,12 @@ import morgan from "morgan";
 const app = express();
 const port = 3000;
 
-const posts = [];
+let posts = [];
 let blogId = 0;
 
 class Blog {
   constructor(title, blurb, content) {
+    // Constructs Blog object and auto handles the id
     this.id = blogId++;
     this.title = title;
     this.blurb = blurb;
@@ -16,39 +17,58 @@ class Blog {
   }
 }
 
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan("dev"));
+// Middleware
+app.use(express.static("public")); // Displays static files
+app.use(express.urlencoded({ extended: true })); // Parses user data
+app.use(morgan("dev")); // Logs HTTP requests
 
+// Sets up server at specified port
 app.listen(port, () => {
   console.log(`Server running at http://localhost:3000`);
 });
 
+// Renders the homepage
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
+// Displays all posts
 app.get("/posts", (req, res) => {
-  // Pass some dummy data
   res.render("posts.ejs", {
     blogs: posts,
   });
 });
 
+// Directs user to a form to create new post
 app.get("/posts/new", (req, res) => {
   res.render("new.ejs");
 });
 
+// Handles creation of new posts
 app.post("/post/create", (req, res) => {
-  const blog = req.body;
-  posts.push(new Blog(blog.title, blog.blurb, blog.content));
+  const post = req.body;
+  posts.push(new Blog(post.title, post.blurb, post.content));
   res.render("posts.ejs", {
-    title: blog.title,
+    title: post.title,
     action: "create",
     blogs: posts,
   });
 });
 
+// Handles deletion of a post
+app.get("/posts/:id/delete", (req, res) => {
+  const id = Number(req.params.id); // Explicitly convert id to a number
+  const post = posts.find((post) => post.id === id);
+  if (!post) res.sendStatus(404, "Post not found"); // Throw a 404 error if post is not found
+  posts = posts.filter((post) => post.id !== id);
+  res.render("posts.ejs", {
+    title: post.title,
+    action: "delete",
+    blogs: posts,
+  });
+});
+
+// Default posts
 posts.push(
   new Blog(
     "Welcome to My Blog",
