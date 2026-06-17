@@ -1,0 +1,13 @@
+<%- include('partials/header.ejs') %>
+
+<h1 class="pb-5">Edit Your ExPress-ive Post</h1>
+
+<%- include('partials/warning.ejs') %> 
+
+<%- include('partials/post-form.ejs', {
+  action: `/posts/${post.id}/edit`,
+  buttonText: "Save Changes",
+  post: post
+}) %>
+
+<%- include('partials/footer.ejs') %>
