@@ -1,3 +1,5 @@
+"use strict";
+
 // Toggle theme of document
 const html = document.documentElement;
 const darkIcon = document.querySelector("#moon-icon");
@@ -61,7 +63,6 @@ const form = document.getElementById("post-form");
 });
 
 // Live Form Validation
-
 function setValidity(el, isValid) {
   // Helper Function for Validity
   el.classList.toggle("is-valid", isValid);
@@ -97,19 +98,18 @@ function validateContent() {
 }
 
 // Updating character count
-
-function updateCounter(el, counter, max = null) {
+function updateCounter(el, counter) {
   // Helper function for counters
   counter.textContent = el.value.trim().length;
 }
 
 // Add Event Listeners
 title.addEventListener("input", () => {
-  updateCounter(title, titleCount, 100);
+  updateCounter(title, titleCount);
   validateTitle();
 });
 blurb.addEventListener("input", () => {
-  updateCounter(blurb, blurbCount, 180);
+  updateCounter(blurb, blurbCount);
   validateBlurb();
 });
 content.addEventListener("input", () => {
