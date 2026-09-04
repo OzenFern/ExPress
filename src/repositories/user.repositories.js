@@ -1,11 +1,17 @@
 import pool from "../db/pool.js";
 
-// TODO: Implement try-catch in services
+export async function findUserById(user_id) {
+  const { rows } = await pool.query("SELECT * FROM users WHERE user_id=$1", [
+    user_id,
+  ]);
+
+  return rows[0];
+}
+
 export async function findUserByEmail(email) {
-  const { rows } = await pool.query(
-    "SELECT * FROM users WHERE email=$1",
-    [email],
-  );
+  const { rows } = await pool.query("SELECT * FROM users WHERE email=$1", [
+    email,
+  ]);
 
   return rows[0];
 }
