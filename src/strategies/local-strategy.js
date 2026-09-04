@@ -1,7 +1,7 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
 import bcrypt from "bcryptjs";
-import pool from "../db/pool.js";
+import {findUserByEmail} from "../repositories/user.repositories.js";
 
 // Serialize user
 passport.serializeUser((user, done) => {
@@ -23,14 +23,7 @@ export default passport.use(
     console.log(`Password: ${password}`);
 
     try {
-      const { rows } = await pool.query(
-        `SELECT password FROM users WHERE email=$1`,
-        [username],
-      );
-      if (rows.length === 0) throw new Error("User not Registered!");
-
-      const hashedPassword = rows[0];
-
+      const {password: hashedPassword} = findUserByEmail(username);
       const isMatch = await bcrypt.compare(password, hashedPassword);
       if (!isMatch) throw new Error("Invalid Credentials");
 
