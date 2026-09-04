@@ -1,9 +1,9 @@
 import "dotenv/config.js";
 
 const env = {
-  port: env.process.APP_PORT,
-  sessionSecret: env.process.SESSION_SECRET,
-  dbConnection: env.process.DB_CONNECTION_URL,
+  port: process.env.APP_PORT,
+  sessionSecret: process.env.SESSION_SECRET,
+  dbConnection: process.env.DB_CONNECTION_URL,
 };
 
 export default env;
