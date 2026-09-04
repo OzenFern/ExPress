@@ -2,23 +2,37 @@
   "name": "ExPress",
   "version": "1.0.0",
   "description": "A responsive posting platform built with Express.js, EJS, and Bootstrap.",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "Ozen Fernandes",
   "license": "ISC",
   "type": "module",
-  "entry": "app.js",
+  "entry": "src/app.js",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
     "express": "^5.2.1",
-    "morgan": "^1.11.0"
+    "express-session": "^1.19.0",
+    "morgan": "^1.11.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.23.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OzenFern/ExPress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OzenFern/ExPress/issues"
+  },
+  "homepage": "https://github.com/OzenFern/ExPress#readme"
 }
