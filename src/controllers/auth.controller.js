@@ -5,7 +5,7 @@ export function showLogin(req, res) {
 }
 
 export function showRegister(req, res) {
-    res.render("auth/register");
+  res.render("auth/register");
 }
 
 export async function register(req, res) {
@@ -24,9 +24,9 @@ export async function register(req, res) {
 }
 
 export function logoutUser(req, res) {
-    req.logout((err) => {
-        if (err) return next(err);
-    });
+  req.logout((err) => {
+    if (err) return next(err);
+  });
 
-    res.redirect("/");
+  res.redirect("/");
 }
