@@ -8,7 +8,7 @@ export function showRegister(req, res) {
   res.render("auth/register");
 }
 
-export async function register(req, res) {
+export async function register(req, res, next) {
   try {
     const { username, password } = req.body;
     const { user } = await registerUser(username, password);
@@ -23,7 +23,7 @@ export async function register(req, res) {
   }
 }
 
-export function logoutUser(req, res) {
+export function logoutUser(req, res, next) {
   req.logout((err) => {
     if (err) return next(err);
   });
