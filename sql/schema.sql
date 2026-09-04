@@ -1,14 +1,16 @@
 -- Users Table --
 CREATE TABLE users (
-    email TEXT PRIMARY KEY,
+    user_id SERIAL PRIMARY KEY
+    email VARCHAR(255) UNIQUE NOT NULL,
     password TEXT NOT NULL
+    created_at TIMESTAMPZ DEFAULT CURRENT_TIMESTTAMP
 );
 
 -- Posts Table --
 CREATE TABLE posts (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(100) NOT NULL,
-    blurb TEXT,
+    post_id SERIAL PRIMARY KEY,
+    title VARCHAR(100) NOT NULL CHECK(LENGTH(title)>=3),
+    blurb VARCHAR(180) CHECK(LENGTH(blurb)>=10),
     content TEXT,
-    user TEXT REFERENCES users(email)
+    user TEXT REFERENCES users(user_id) ON DELETE CASCADE
 );
