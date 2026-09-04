@@ -4,6 +4,10 @@ export function showLogin(req, res) {
   res.render("auth/login");
 }
 
+export function showRegister(req, res) {
+    res.render("auth/register");
+}
+
 export async function register(req, res) {
   try {
     const { username, password } = req.body;
