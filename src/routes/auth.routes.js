@@ -1,9 +1,10 @@
 import { Router } from "express";
 import passport from "passport";
 import {
-  register,
-  showLogin,
-  showRegister,
+    logoutUser,
+    register,
+    showLogin,
+    showRegister,
 } from "../controllers/auth.controller.js";
 
 const router = Router();
@@ -20,5 +21,7 @@ router.post(
     failureRedirect: "/auth/login",
   }),
 );
+
+router.post("/logout", logoutUser);
 
 export default router;
