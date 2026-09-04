@@ -1,4 +1,18 @@
+# Dependency directories
 node_modules/
-temp/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variable files
 .env
+.env.*
+!.env.example
+# Idea Files
 .idea/
+
+# Temporary files
+temp/
