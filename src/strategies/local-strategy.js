@@ -1,7 +1,7 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
 import bcrypt from "bcryptjs";
-import {findUserByEmail} from "../repositories/user.repositories.js";
+import {findUserByEmail, findUserById} from "../repositories/user.repositories.js";
 
 // Serialize user
 passport.serializeUser((user, done) => {
@@ -9,10 +9,9 @@ passport.serializeUser((user, done) => {
 });
 
 // Deserialize user
-passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
+passport.deserializeUser(async (id, done) => {
+    const user = await findUserById(id);
     done(err, user);
-  });
 });
 
 // Setup local strategy
@@ -23,7 +22,7 @@ export default passport.use(
     console.log(`Password: ${password}`);
 
     try {
-      const {password: hashedPassword} = findUserByEmail(username);
+      const { password: hashedPassword } = findUserByEmail(username);
       const isMatch = await bcrypt.compare(password, hashedPassword);
       if (!isMatch) throw new Error("Invalid Credentials");
 
