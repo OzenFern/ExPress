@@ -17,7 +17,7 @@ export async function register(req, res, next) {
       if (err) return next(err);
     });
 
-    res.redirect("/posts", { user });
+    res.redirect("/posts");
   } catch (err) {
     next(err);
   }
