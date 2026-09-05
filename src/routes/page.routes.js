@@ -5,7 +5,7 @@ import {
 } from "../controllers/page.controller.js";
 import { cache } from "../middlewares/cache.middleware.js";
 
-const router = new Router();
+const router = Router();
 
 router.get("/", cache(3600), renderHomePage);
 router.get("/about", cache(86400), renderAboutPage);
