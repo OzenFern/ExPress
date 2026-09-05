@@ -100,19 +100,27 @@ document.querySelectorAll("[data-dismiss]").forEach((button) => {
 document.querySelectorAll("[data-modal-open]").forEach((button) => {
   button.addEventListener("click", () => {
     const modal = document.querySelector(button.dataset.modalOpen);
-    modal?.classList.add("is-visible");
-    modal?.querySelector("[data-modal-close]")?.focus();
+    if (!modal) return;
+
+    modal.classList.add("is-visible");
+    modal.setAttribute("aria-hidden", "false");
+    modal.querySelector("[data-modal-close]")?.focus({ preventScroll: true });
   });
 });
 
 document.querySelectorAll("[data-modal-close]").forEach((button) => {
-  button.addEventListener("click", () =>
-    button.closest(".modal")?.classList.remove("is-visible"),
-  );
+  button.addEventListener("click", () => {
+    const modal = button.closest(".modal");
+    modal?.classList.remove("is-visible");
+    modal?.setAttribute("aria-hidden", "true");
+  });
 });
 
 document.querySelectorAll(".modal").forEach((modal) => {
   modal.addEventListener("click", (event) => {
-    if (event.target === modal) modal.classList.remove("is-visible");
+    if (event.target !== modal) return;
+
+    modal.classList.remove("is-visible");
+    modal.setAttribute("aria-hidden", "true");
   });
 });
