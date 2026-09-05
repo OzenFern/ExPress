@@ -1,7 +1,7 @@
 {
   "name": "ExPress",
   "version": "2.0.0",
-  "description": "A responsive posting platform built with Express.js, EJS, and Bootstrap.",
+  "description": "A responsive server-rendered posting platform built with Express.js, EJS, PostgreSQL, and vanilla CSS.",
   "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
