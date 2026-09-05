@@ -1,13 +1,13 @@
 export function cache(seconds) {
-    return (req, res, next) => {
-        res.set("Cache-Control", `public, max-age=${seconds}`);
+  return (req, res, next) => {
+    res.set("Cache-Control", `public, max-age=${seconds}`);
 
-        next();
-    };
+    next();
+  };
 }
 
 export function noCache(req, res, next) {
-    res.set("Cache-Control", "no-store");
+  res.set("Cache-Control", "no-store");
 
-    next();
+  next();
 }
