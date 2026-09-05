@@ -19,7 +19,8 @@ themeToggle?.addEventListener("click", () => {
 });
 
 menuToggle?.addEventListener("click", () => {
-  const isOpen = navigation?.classList.toggle("is-open");
+  if (!navigation) return;
+  const isOpen = navigation.classList.toggle("is-open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
