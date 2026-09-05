@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "Ozen Fernandes",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "entry": "src/app.js",
   "dependencies": {
