@@ -34,13 +34,13 @@ export function renderEditPostForm(req, res) {
   });
 }
 
-export async function editPost(req, res) {
+export async function editSinglePost(req, res) {
   const post = await ps.updatePost(Number(req.params.id), req.user.id);
 
   redirectWithMessage(req, res, "edited", post.title);
 }
 
-export async function deletePost(req, res) {
+export async function deleteSinglePost(req, res) {
   await ps.deletePost(req.post.id);
 
   redirectWithMessage(req, res, "deleted", req.post.title);
