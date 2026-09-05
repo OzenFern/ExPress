@@ -17,7 +17,7 @@ import { errorHandler } from "./middlewares/errorHandler.middleware.js";
 import { viewFlashMessage } from "./middlewares/flash.middleware.js";
 
 const app = express();
-const port = 3000;
+const port = env.port;
 
 // Setup __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
