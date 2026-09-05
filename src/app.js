@@ -47,6 +47,9 @@ app.use(
     resave: false,
     cookie: {
       maxAge: 86400000,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
     },
   }),
 );
@@ -70,5 +73,5 @@ app.use(errorHandler);
 
 // Sets up server at specified port
 app.listen(port, () => {
-  console.log(`ExPress running at http://localhost:3000`);
+  console.log(`ExPress running at http://localhost:${port}`);
 });
