@@ -6,12 +6,12 @@ import {
   showLogin,
   showRegister,
 } from "../controllers/auth.controller.js";
-import { cache } from "../middlewares/cache.middleware.js";
+import { noCache } from "../middlewares/cache.middleware.js";
 
 const router = Router();
 
-router.get("/register", cache(3600), showRegister);
-router.get("/login", cache(3600), showLogin);
+router.get("/register", noCache, showRegister);
+router.get("/login", noCache, showLogin);
 
 router.post("/register", register);
 
@@ -20,6 +20,8 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/posts",
     failureRedirect: "/auth/login",
+    failureFlash:
+      "We could not sign you in. Check your details or register for an account.",
   }),
 );
 
