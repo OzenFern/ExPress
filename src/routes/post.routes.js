@@ -26,8 +26,8 @@ router.post("/create", createNewPost);
 router.get("/:id", loadPost, getSinglePost);
 router.get("/:id/edit", loadPost, renderEditPostForm);
 
-router.post("/:id/edit", editSinglePost);
+router.post("/:id/edit", loadPost, editSinglePost);
 
-router.get("/:id/delete", loadPost, deleteSinglePost);
+router.post("/:id/delete", loadPost, deleteSinglePost);
 
 export default router;
