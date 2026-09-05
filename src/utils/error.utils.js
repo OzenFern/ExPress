@@ -7,5 +7,5 @@ export function asyncTryCatch(fn, fallbackValue = null) {
       console.error(err.stack);
       return fallbackValue;
     }
-  }
+  };
 }
