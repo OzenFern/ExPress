@@ -4,6 +4,8 @@ import session from "express-session";
 import env from "./config/env.config.js";
 import flash from "connect-flash";
 import passport from "passport";
+import helmet from "helmet";
+import compression from "compression";
 import "./strategies/local-strategy.js";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -13,8 +15,6 @@ import pageRouter from "./routes/page.routes.js";
 import postRouter from "./routes/post.routes.js";
 import { errorHandler } from "./middlewares/errorHandler.middleware.js";
 import { viewFlashMessage } from "./middlewares/flash.middleware.js";
-
-// TODO: Increment the version number
 
 const app = express();
 const port = 3000;
@@ -30,7 +30,9 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // Middleware
-app.use(express.static(path.join(__dirname, "../public"))); // Displays static files TODO: caching
+app.use(helmet());
+app.use(compression());
+app.use(express.static(path.join(__dirname, "../public"), { maxAge: "30d" }));
 app.use(express.urlencoded({ extended: true })); // Parses user data
 app.use(morgan("dev")); // Logs HTTP requests
 
@@ -59,7 +61,6 @@ app.use(viewFlashMessage);
 app.use(passport.initialize());
 app.use(passport.session());
 
-// TODO: Add routes
 app.use("/", pageRouter);
 app.use("/auth", authRouter);
 app.use("/posts", postRouter);
