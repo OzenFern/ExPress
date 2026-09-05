@@ -1,8 +1,8 @@
 /**
  * Redirects to posts with a flash message.
  *
- * @param {*} req - request
- * @param {*} res - response
+ * @param {import("express").Request} req - request
+ * @param {import("express").Response} res - response
  * @param {string} action - action performed
  * @param {string} title - title of post
  */
