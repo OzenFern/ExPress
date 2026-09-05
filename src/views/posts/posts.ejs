@@ -1,0 +1,37 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="page-heading">
+  <p class="eyebrow">The ExPress archive</p>
+  <h1>All Posts</h1>
+  <p>Ideas in progress, lessons learned, and perspectives worth passing on.</p>
+</div>
+
+<% if (locals.title && locals.action) { %>
+  <%- include("../partials/flash-message.ejs", { title, action }) %>
+<% } %>
+
+<% if (locals.posts && posts.length === 0) { %>
+  <div class="empty-state">
+    <p class="eyebrow">A blank first page</p>
+    <h2>No posts yet</h2>
+    <p>Start writing your first post and it will appear here.</p>
+    <a class="button button-primary" href="/posts/new">Create new post ↗</a>
+  </div>
+<% } else { %>
+  <div class="post-grid">
+    <% posts.forEach(post => { %>
+      <article class="post-card">
+        <p class="post-meta">Dispatch · <%= post.post_id %></p>
+        <h3><%= post.title %></h3>
+        <p><%= post.blurb %></p>
+        <div class="actions">
+          <a href="/posts/<%= post.post_id %>" class="button button-primary">Read ↗</a>
+          <a href="/posts/<%= post.post_id %>/edit" class="button button-secondary">Edit</a>
+          <%- include("../partials/delete-modal.ejs", { post, buttonClass: '' }) %>
+        </div>
+      </article>
+    <% }); %>
+  </div>
+<% } %>
+
+<%- include('../partials/footer.ejs') %>

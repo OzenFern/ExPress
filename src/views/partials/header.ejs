@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17211d" />
+    <title>ExPress — stories worth sharing</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="/" aria-label="ExPress home">
+          <span class="brand-mark">E</span>
+          <span>ExPress</span>
+        </a>
+        <nav class="site-navigation" id="site-navigation" aria-label="Main navigation">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/posts">Posts</a></li>
+            <li><a href="/posts/new">Create Post</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/auth/register">Register</a></li>
+            <li><a href="/auth/login">Login</a></li>
+            <li><form action="/auth/logout" method="POST"><button type="submit">Logout</button></form></li>
+          </ul>
+        </nav>
+        <div class="nav-actions">
+          <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to light theme">◐</button>
+          <button class="menu-button" id="menu-toggle" type="button" aria-label="Open navigation" aria-controls="site-navigation" aria-expanded="false">
+            <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="site-main">

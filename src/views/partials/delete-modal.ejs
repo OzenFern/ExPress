@@ -1,0 +1,11 @@
+<button type="button" class="button button-danger <%= buttonClass ?? '' %>" data-modal-open="#deletePost<%= post.post_id %>">Delete Post</button>
+<div class="modal" id="deletePost<%= post.post_id %>" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="delete-title-<%= post.post_id %>">
+    <h3 id="delete-title-<%= post.post_id %>">Delete this post?</h3>
+    <p>“<strong><%= post.title %></strong>” will be removed permanently.</p>
+    <div class="modal-actions">
+      <button type="button" class="button button-secondary" data-modal-close>Keep it</button>
+      <form action="/posts/<%= post.post_id %>/delete" method="POST"><button type="submit" class="button button-danger">Delete</button></form>
+    </div>
+  </div>
+</div>
