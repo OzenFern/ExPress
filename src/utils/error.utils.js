@@ -5,7 +5,8 @@ export function asyncTryCatch(fn, fallbackValue = null) {
     } catch (err) {
       console.error(`Async Error in ${fn.name || "anonymous"}: ${err.message}`);
       console.error(err.stack);
-      return fallbackValue;
+      if (fallbackValue !== null) return fallbackValue;
+      throw err;
     }
   };
 }
