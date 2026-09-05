@@ -10,10 +10,13 @@ import {
   renderEditPostForm,
 } from "../controllers/post.controller.js";
 import { loadPost } from "../middlewares/post.middleware.js";
+import { noCache } from "../middlewares/cache.middleware.js";
 
 const router = Router();
 
 router.use(requireAuth);
+// Prevents post pages from being cached
+router.use(noCache);
 
 router.get("/", getPosts);
 router.get("/new", renderCreatePostForm);
