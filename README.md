@@ -1,237 +1,184 @@
 # ExPress
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://express-h37l.onrender.com)
-![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white)
-![EJS](https://img.shields.io/badge/EJS-B4CA65?logo=ejs&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white)
-![License](https://img.shields.io/badge/License-ISC-blue)
-![Status](https://img.shields.io/badge/Status-Complete-success)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)](https://expressjs.com/)
+[![EJS](https://img.shields.io/badge/EJS-templating-B4CA65?logo=ejs&logoColor=black)](https://ejs.co/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-database-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Neon](https://img.shields.io/badge/Neon-hosted%20PostgreSQL-00E599?logo=postgresql&logoColor=111111)](https://neon.tech/)
+[![Passport](https://img.shields.io/badge/Passport-authentication-34E27A?logo=passport&logoColor=111111)](https://www.passportjs.org/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=111111)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CSS](https://img.shields.io/badge/CSS-vanilla-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![Render](https://img.shields.io/badge/Deployed%20on-Render-46E3B7?logo=render&logoColor=111111)](https://render.com/)
 
-A modern posting platform built with Express.js and EJS that allows users to create, view, edit, and delete posts through a clean, responsive interface.
+ExPress is a server-rendered publishing platform for writing, editing, and sharing short-form posts. It is built with Express, EJS, PostgreSQL, and a handcrafted responsive frontend.
 
-ExPress was developed as a full-stack learning project focused on understanding server-side rendering, routing, CRUD operations, middleware, form handling, and responsive UI development with Bootstrap.
+**Live demo:** [express-h37l.onrender.com](https://express-h37l.onrender.com)
 
----
+## What it includes
 
-## Features
+- Account registration, login, logout, and protected post routes
+- Full post CRUD with ownership checks
+- Server-rendered EJS pages and reusable view partials
+- Mobile-first responsive interface with light/dark themes
+- Vanilla JavaScript for validation, character counts, menus, modals, and theme persistence
+- PostgreSQL persistence through Neon
+- Security and performance middleware with Helmet, compression, sessions, and response caching
+- Custom 404 and 500 error pages
 
-### Core Functionality
+## Technology
 
-- Create new posts
-- View all posts
-- View individual posts
-- Edit existing posts
-- Delete posts with confirmation modal
-- Custom 404 page for invalid routes
+| Area           | Tools                                     |
+| -------------- | ----------------------------------------- |
+| Runtime        | Node.js                                   |
+| Server         | Express 5                                 |
+| Views          | EJS                                       |
+| Database       | PostgreSQL / Neon                         |
+| Authentication | Passport Local, bcryptjs, express-session |
+| Frontend       | Vanilla JavaScript and CSS                |
+| Operations     | Helmet, compression, Morgan, Render       |
 
-### User Experience
+## Requirements
 
-- Responsive Bootstrap-based interface
-- Light and dark mode toggle
-- Live form validation
-- Character counters for all form fields
-- Keyboard navigation improvements
-- Dynamic success notifications
-- Mobile-friendly layouts
+- Node.js 18 or newer
+- A PostgreSQL database
+- npm
 
-### Form Validation
-
-Posts are validated both through HTML constraints and client-side JavaScript feedback.
-
-| Field       | Requirements          |
-| ----------- | --------------------- |
-| Title       | 3–100 characters      |
-| Description | 10–180 characters     |
-| Content     | Minimum 30 characters |
-
-Additional features include:
-
-- Real-time character counting
-- Instant validation feedback
-- Automatic focus progression using keyboard shortcuts
-- Prevention of invalid form submissions
-
----
-
-## Tech Stack
-
-### Backend
-
-- Node.js
-- Express.js
-- Morgan
-
-### Frontend
-
-- EJS
-- Bootstrap 5
-- Custom CSS
-- Vanilla JavaScript
-
-### Development Tools
-
-- Nodemon
-
----
-
-## Project Structure
-
-```text
-ExPress/
-├── assets/
-│   └── screenshots/
-│       ├── home.png
-│       ├── posts.png
-│       ├── create-post.png
-│       ├── edit-post.png
-│       ├── single-post.png
-│       ├── about.png
-│       └── 404.png
-├── public/
-│   ├── index.js
-│   └── styles.css
-│
-├── views/
-│   ├── partials/
-│   │   ├── delete-modal.ejs
-│   │   ├── footer.ejs
-│   │   ├── header.ejs
-│   │   ├── post-form.ejs
-│   │   └── warning.ejs
-│   │
-│   ├── 404.ejs
-│   ├── about.ejs
-│   ├── edit.ejs
-│   ├── index.ejs
-│   ├── new.ejs
-│   ├── post.ejs
-│   └── posts.ejs
-│
-├── app.js
-├── package.json
-├── package-lock.json
-├── README.md
-└── .gitignore
-```
-
----
-
-## Installation
-
-### Clone the Repository
+## Run locally
 
 ```bash
-git clone https://github.com/OzenFern/ExPress
+git clone https://github.com/OzenFern/ExPress.git
 cd ExPress
-```
-
-### Install Dependencies
-
-```bash
 npm install
 ```
 
-### Start Development Server
+Create a `.env` file from `.env.example`:
+
+```env
+NODE_ENV=development
+APP_PORT=3000
+SESSION_SECRET=replace-with-a-long-random-secret
+DB_CONNECTION_URL=postgresql://user:password@host/database?sslmode=require
+```
+
+Apply the database schema to your PostgreSQL database:
+
+```bash
+psql "$DB_CONNECTION_URL" -f sql/schema.sql
+```
+
+The optional seed file inserts example content. Run it only when the database is empty:
+
+```bash
+psql "$DB_CONNECTION_URL" -f sql/seed.sql
+```
+
+Start the application:
 
 ```bash
 npm run dev
 ```
 
-### Start Production Server
+Open [http://localhost:3000](http://localhost:3000).
+
+For a production-style local run:
 
 ```bash
 npm start
 ```
 
-The application will be available at:
+## Deploy to Render with Neon
+
+### 1. Create the Neon database
+
+Create a Neon PostgreSQL project and copy its pooled connection string. The connection string should include `sslmode=require`.
+
+Run `sql/schema.sql` against the Neon database. `sql/seed.sql` is optional.
+
+### 2. Create the Render web service
+
+Connect the GitHub repository to Render and create a Web Service with:
+
+| Setting       | Value         |
+| ------------- | ------------- |
+| Build command | `npm install` |
+| Start command | `npm start`   |
+| Environment   | `Node`        |
+
+Render supplies the `PORT` variable automatically. The application uses it in production and falls back to `APP_PORT` locally.
+
+### 3. Add environment variables
+
+Add these variables in the Render dashboard:
+
+| Variable            | Value                                 |
+| ------------------- | ------------------------------------- |
+| `NODE_ENV`          | `production`                          |
+| `SESSION_SECRET`    | A long, unique random secret          |
+| `DB_CONNECTION_URL` | The Neon PostgreSQL connection string |
+
+Never commit `.env` or database credentials. A production session store should be added before running multiple instances; the current session configuration uses Express's in-memory store and is intended for this single-service project.
+
+## Project structure
 
 ```text
-http://localhost:3000
+ExPress/
+├── public/
+│   ├── css/
+│   │   ├── base/tokens.css
+│   │   ├── components/motion.css
+│   │   └── main.css
+│   └── js/main.js
+├── src/
+│   ├── config/
+│   ├── controllers/
+│   ├── db/
+│   ├── middlewares/
+│   ├── repositories/
+│   ├── routes/
+│   ├── services/
+│   ├── strategies/
+│   ├── utils/
+│   └── views/
+├── sql/
+│   ├── schema.sql
+│   └── seed.sql
+├── .env.example
+├── package.json
+└── README.md
 ```
 
----
+## Available scripts
 
-## Screenshots
+| Command                | Purpose                             |
+| ---------------------- | ----------------------------------- |
+| `npm run dev`          | Start with Nodemon                  |
+| `npm start`            | Start the production server         |
+| `npm run lint`         | Run ESLint                          |
+| `npm run lint:fix`     | Apply ESLint fixes                  |
+| `npm run format`       | Format the repository with Prettier |
+| `npm run format:check` | Check Prettier formatting           |
 
-### Home Page
+## Validation rules
 
-![Home Page](assets/screenshots/home.png)
+| Field   | Rule                   |
+| ------- | ---------------------- |
+| Title   | 3-100 characters       |
+| Blurb   | 10-180 characters      |
+| Content | At least 30 characters |
 
-### Posts Page
+Validation is enforced in the browser, with title and blurb length constraints also enforced by the database. Authorization is enforced server-side by scoping post queries to the authenticated user's `user_id`.
 
-![Posts Page](assets/screenshots/posts.png)
+## Version history
 
-### Create Post Page
+- **v1.0.0** (`main`): Initial Express/EJS posting application with in-memory post data and Bootstrap UI.
+- **v2.0.0** (`frontend`): PostgreSQL persistence, authentication, protected CRUD routes, production middleware, Render/Neon deployment support, and the redesigned vanilla CSS frontend.
 
-![Create Post Page](assets/screenshots/create-post.png)
+See [CHANGELOG.md](CHANGELOG.md) for the detailed release history.
 
-### Edit Post Page
+## License
 
-![Edit Post Page](assets/screenshots/edit-post.png)
-
-### Single Post View
-
-![Single Post View](assets/screenshots/single-post.png)
-
-### About Page
-
-![About Page](assets/screenshots/about.png)
-
-### Custom 404 Page
-
-![Custom 404 Page](assets/screenshots/404.png)
-
----
-
-## Known Limitations
-
-This project currently stores posts in memory.
-
-As a result:
-
-- Posts are lost when the server restarts
-- No database persistence
-- No user authentication
-- No account system
-
-A warning banner is displayed throughout the application to communicate this behavior.
-
----
-
-## Future Improvements
-
-- Database integration (PostgreSQL or MongoDB)
-- User authentication and authorization
-- Rich text editor
-- Search and filtering
-- Categories and tags
-- Image uploads
-- Pagination
-- Markdown support
-- User profiles
-- REST API endpoints
-
----
-
-## Learning Outcomes
-
-This project was built to gain hands-on experience with:
-
-- Express.js routing
-- Middleware
-- CRUD operations
-- EJS templating
-- Server-side rendering
-- Form handling and validation
-- Responsive design
-- Reusable UI components
-- Application structure and organization
-
----
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
 
 ## Author
 
 **Ozen Fernandes**
-
-Built as part of my journey in learning backend and full-stack web development.
