@@ -30,6 +30,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // Middleware
+app.set("trust proxy", 1);
 app.use(helmet());
 app.use(compression());
 app.use(express.static(path.join(__dirname, "../public"), { maxAge: "30d" }));
