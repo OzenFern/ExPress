@@ -2,7 +2,7 @@ export function errorHandler(err, req, res, next) {
   console.error(`[ExPress Internal Error] ${err.message}`);
   console.error(err.stack);
 
-  if (req.headerSent) {
+  if (res.headersSent) {
     return next(err);
   }
 
