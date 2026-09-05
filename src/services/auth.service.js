@@ -4,6 +4,6 @@ import { asyncTryCatch } from "../utils/error.utils.js";
 
 const saltRounds = 12;
 
-export const registerUser = asyncTryCatch((username, password) =>
-  createUser(username, bcrypt.hash(password, saltRounds)),
+export const registerUser = asyncTryCatch(async (email, password) =>
+  createUser(email, await bcrypt.hash(password, saltRounds)),
 );
