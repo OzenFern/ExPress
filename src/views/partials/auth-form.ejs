@@ -2,7 +2,7 @@
   <div class="auth-card">
     <p class="eyebrow">Welcome to ExPress</p>
     <h1><%= authTitle %></h1>
-    <form>
+    <form action="<%= authAction === 'Login' ? '/auth/login' : '/auth/register' %>" method="POST">
       <label class="field">Email address<input type="email" name="email" placeholder="you@example.com" required /></label>
       <label class="field">Password<input type="password" name="password" placeholder="••••••••" required /></label>
       <button class="button button-primary button-block" type="submit"><%= authAction %> <span>↗</span></button>
