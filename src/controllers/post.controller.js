@@ -36,7 +36,7 @@ export function renderEditPostForm(req, res) {
 export async function editSinglePost(req, res) {
   const post = await ps.updatePost(
     Number(req.params.id),
-    req.body.post,
+    req.body,
     req.user.user_id,
   );
 
