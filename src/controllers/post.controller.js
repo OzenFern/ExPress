@@ -4,11 +4,7 @@ import { redirectWithMessage } from "../utils/redirect.utils.js";
 export async function getPosts(req, res) {
   const posts = await ps.getAllPosts(req.user.user_id);
 
-  res.render("posts/posts", {
-    posts,
-    title: req.query.title,
-    action: req.query.action,
-  });
+  res.render("posts/posts", { posts });
 }
 
 export function renderCreatePostForm(req, res) {
