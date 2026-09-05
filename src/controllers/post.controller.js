@@ -22,7 +22,7 @@ export async function createNewPost(req, res) {
   redirectWithMessage(req, res, "created", post.title);
 }
 
-export async function getPost(req, res) {
+export async function getSinglePost(req, res) {
   res.render("posts/post", {
     post: req.post,
   });
