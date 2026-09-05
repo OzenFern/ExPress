@@ -8,7 +8,7 @@ import {
 
 // Serialize user
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user.user_id);
 });
 
 // Deserialize user
@@ -24,18 +24,18 @@ passport.deserializeUser(async (id, done) => {
 // Setup local strategy
 export default passport.use(
   "local",
-  new Strategy(async (username, password, done) => {
-    console.log(`Username: ${username}`);
-    console.log(`Password: ${password}`);
-
+  new Strategy({ usernameField: "email" }, async (email, password, done) => {
     try {
-      const { password: hashedPassword } = findUserByEmail(username);
+      const user = await findUserByEmail(email);
+      if (!user) return done(null, false);
+
+      const { password: hashedPassword } = user;
       const isMatch = await bcrypt.compare(password, hashedPassword);
-      if (!isMatch) throw new Error("Invalid Credentials");
+      if (!isMatch) return done(null, false);
 
       done(null, user);
     } catch (error) {
-      done(error, null);
+      done(error);
     }
   }),
 );
