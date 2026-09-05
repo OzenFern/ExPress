@@ -41,6 +41,10 @@ app.use(morgan("dev")); // Logs HTTP requests
   Set up express-session
   Save cookies for 1 day
  */
+if (!env.sessionSecret) {
+  throw new Error("SESSION_SECRET is required");
+}
+
 app.use(
   session({
     secret: env.sessionSecret,
