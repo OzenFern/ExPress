@@ -1,15 +1,11 @@
-<div class="form-signin w-100 m-auto">
+<div class="auth-shell">
+  <div class="auth-card">
+    <p class="eyebrow">Welcome to ExPress</p>
+    <h1><%= authTitle %></h1>
     <form>
-        <h1 class="h3 mb-3 fw-normal"><%= authTitle %></h1>
-        <div class="form-floating"><input type="email" class="form-control" id="floatingInput"
-                                          placeholder="jane.doe@email.com">
-            <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword"
-                                          placeholder="Password">
-            <label for="floatingPassword">Password</label>
-        </div>
-        <button class="btn btn-primary w-100 py-2" type="submit"><%= authAction %></button>
+      <label class="field">Email address<input type="email" name="email" placeholder="you@example.com" required /></label>
+      <label class="field">Password<input type="password" name="password" placeholder="••••••••" required /></label>
+      <button class="button button-primary button-block" type="submit"><%= authAction %> <span>↗</span></button>
     </form>
+  </div>
 </div>

@@ -1,22 +1,8 @@
 <%- include('../partials/header.ejs') %>
-
-<div class="container my-5">
-  <div class="p-5 text-center bg-body-tertiary rounded-3">
-    <h1 class="pb-3 fw-bold">404 Error</h1>
-    <h2 class="text-body-emphasis pb-1">This Page Never Made it to Print</h2>
-    <p class="col-lg-8 mx-auto fs-5 text-muted">
-      Looks like the article you're looking for has been misplaced somewhere
-      between the drafts and the publishing desk.
-    </p>
-    <div class="d-inline-flex gap-2">
-      <a
-        class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill"
-        href="/"
-      >
-        Return to Homepage
-      </a>
-    </div>
-  </div>
+<div class="error-state">
+  <p class="eyebrow">404 · Lost in the margins</p>
+  <h1>This page never made it to print.</h1>
+  <p>Looks like the story you're looking for took a detour.</p>
+  <a class="button button-primary" href="/">Return home ↗</a>
 </div>
-
 <%- include('../partials/footer.ejs') %>

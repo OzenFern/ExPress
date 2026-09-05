@@ -1,6 +1,9 @@
 <%- include('../partials/header.ejs') %>
 
-<h1 class="pb-5">Edit Your ExPress-ive Post</h1>
+<div class="page-heading">
+  <p class="eyebrow">Polish the draft</p>
+  <h1>Make it sing.</h1>
+</div>
 
 <%- include('../partials/post-form.ejs', {
   action: `/posts/${post.id}/edit`,
