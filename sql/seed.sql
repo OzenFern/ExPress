@@ -1,8 +1,9 @@
 -- Seed user --
+-- Password is seed
 INSERT INTO users (email, password)
 VALUES (
            'seed@example.com',
-           'seed-password'
+           '$2b$12$JhF46pjJMnfq3JhO3Ecvj.xSSQ99ojznrwYyJ/3M4kFx.SHIa.QIO'
        );
 
 -- Seed posts --
