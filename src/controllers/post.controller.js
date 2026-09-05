@@ -2,7 +2,7 @@ import * as ps from "../services/post.service.js";
 import { redirectWithMessage } from "../utils/redirect.utils.js";
 
 export async function getPosts(req, res) {
-  const posts = await ps.getAllPosts(req.user.id);
+  const posts = await ps.getAllPosts(req.user.user_id);
 
   res.render("posts/posts", {
     posts,
@@ -16,8 +16,7 @@ export function renderCreatePostForm(req, res) {
 }
 
 export async function createNewPost(req, res) {
-  const { post: postPayload } = req.body;
-  const post = await ps.createPost(postPayload, req.user.id);
+  const post = await ps.createPost(req.body, req.user.user_id);
 
   redirectWithMessage(req, res, "created", post.title);
 }
@@ -35,13 +34,17 @@ export function renderEditPostForm(req, res) {
 }
 
 export async function editSinglePost(req, res) {
-  const post = await ps.updatePost(Number(req.params.id), req.user.id);
+  const post = await ps.updatePost(
+    Number(req.params.id),
+    req.body.post,
+    req.user.user_id,
+  );
 
   redirectWithMessage(req, res, "edited", post.title);
 }
 
 export async function deleteSinglePost(req, res) {
-  await ps.deletePost(req.post.id);
+  await ps.deletePost(req.post.post_id, req.user.user_id);
 
   redirectWithMessage(req, res, "deleted", req.post.title);
 }
