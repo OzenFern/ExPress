@@ -9,7 +9,7 @@
   </header>
   <div class="post-content"><%= post.content %></div>
   <div class="actions">
-    <a href="/posts/<%= post.id %>/edit" class="button button-secondary">Edit post</a>
+    <a href="/posts/<%= post.post_id %>/edit" class="button button-secondary">Edit post</a>
     <%- include("../partials/delete-modal.ejs", { post, buttonClass: '' }) %>
   </div>
 </article>

@@ -21,12 +21,12 @@
   <div class="post-grid">
     <% posts.forEach(post => { %>
       <article class="post-card">
-        <p class="post-meta">Dispatch · <%= post.id %></p>
+        <p class="post-meta">Dispatch · <%= post.post_id %></p>
         <h3><%= post.title %></h3>
         <p><%= post.blurb %></p>
         <div class="actions">
-          <a href="/posts/<%= post.id %>" class="button button-primary">Read ↗</a>
-          <a href="/posts/<%= post.id %>/edit" class="button button-secondary">Edit</a>
+          <a href="/posts/<%= post.post_id %>" class="button button-primary">Read ↗</a>
+          <a href="/posts/<%= post.post_id %>/edit" class="button button-secondary">Edit</a>
           <%- include("../partials/delete-modal.ejs", { post, buttonClass: '' }) %>
         </div>
       </article>
