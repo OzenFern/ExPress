@@ -7,7 +7,6 @@
  * @param {string} title - title of post
  */
 export function redirectWithMessage(req, res, action, title) {
-  req.flash("success", `Post "${title}" ${action} successfully.`);
-
-  res.redirect("/posts");
+  req.flash("success", { title, action });
+  return res.redirect("/posts");
 }
