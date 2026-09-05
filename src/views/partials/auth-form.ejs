@@ -2,6 +2,13 @@
   <div class="auth-card">
     <p class="eyebrow">Welcome to ExPress</p>
     <h1><%= authTitle %></h1>
+    <% if (locals.messages?.error?.length) { %>
+      <div class="flash auth-flash" data-dismissible role="alert">
+        <span class="flash-icon" aria-hidden="true">!</span>
+        <span><%= messages.error[0] %></span>
+        <button class="flash-dismiss" type="button" data-dismiss aria-label="Dismiss message">×</button>
+      </div>
+    <% } %>
     <form action="<%= authAction === 'Login' ? '/auth/login' : '/auth/register' %>" method="POST">
       <label class="field">Email address<input type="email" name="email" placeholder="you@example.com" required /></label>
       <label class="field">Password<input type="password" name="password" placeholder="••••••••" required /></label>
