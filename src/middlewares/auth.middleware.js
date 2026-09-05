@@ -1,4 +1,4 @@
-export function requireAuth(req, res) {
+export function requireAuth(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
