@@ -3,5 +3,5 @@ export function requireAuth(req, res) {
     return next();
   }
 
-  res.redirect("auth/login");
+  res.redirect("/auth/login");
 }
