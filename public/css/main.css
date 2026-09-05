@@ -504,6 +504,23 @@ p {
   color: inherit;
   cursor: pointer;
 }
+.auth-flash {
+  align-items: center;
+  gap: 14px;
+}
+.auth-flash .flash-icon,
+.auth-flash .flash-dismiss {
+  flex: 0 0 auto;
+  font-weight: 800;
+  line-height: 1;
+}
+.auth-flash .flash-icon {
+  font-size: 1.45rem;
+}
+.auth-flash .flash-dismiss {
+  padding: 2px 4px;
+  font-size: 1.8rem;
+}
 .modal {
   position: fixed;
   inset: 0;
