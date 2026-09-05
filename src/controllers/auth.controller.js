@@ -10,14 +10,14 @@ export function showRegister(req, res) {
 
 export async function register(req, res, next) {
   try {
-    const { username, password } = req.body;
-    const { user } = await registerUser(username, password);
+    const { email, password } = req.body;
+    const user = await registerUser(email, password);
+    if (!user) return res.redirect("/auth/register");
 
     req.login(user, (err) => {
       if (err) return next(err);
+      return res.redirect("/posts");
     });
-
-    res.redirect("/posts");
   } catch (err) {
     next(err);
   }
@@ -26,7 +26,6 @@ export async function register(req, res, next) {
 export function logoutUser(req, res, next) {
   req.logout((err) => {
     if (err) return next(err);
+    return res.redirect("/");
   });
-
-  res.redirect("/");
 }
