@@ -7,7 +7,7 @@
 </div>
 
 <% if (locals.title && locals.action) { %>
-  <%- include("../partials/flash-message.ejs"), { title, action } %>
+  <%- include("../partials/flash-message.ejs", { title, action }) %>
 <% } %>
 
 <% if (locals.posts && posts.length === 0) { %>
