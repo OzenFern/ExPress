@@ -3,7 +3,7 @@ import pool from "../db/pool.js";
 /**
  * Gets all posts of a particular from the posts table
  *
- * @param {number} user_id - id of the user
+ * @param {*} user_id - id of the user
  * @returns
  */
 
@@ -19,14 +19,15 @@ export async function getAllPosts(user_id) {
  * Gets post by their id from the posts table
  *
  * @param {number} post_id - id of the post
- * @param {number} user_id - id of the user
+ * @param {*} user_id - id of the user
  * @returns
  */
 
 export async function getPost(post_id, user_id) {
-  const { rows } = await pool.query("SELECT * FROM posts WHERE post_id=$1 AND user_id=$2", [
-    post_id, user_id
-  ]);
+  const { rows } = await pool.query(
+    "SELECT * FROM posts WHERE post_id=$1 AND user_id=$2",
+    [post_id, user_id],
+  );
 
   return rows[0];
 }
@@ -38,8 +39,7 @@ export async function getPost(post_id, user_id) {
  * @param {string} post.title
  * @param {string} post.blurb
  * @param {string} post.content
- *
- * @param {number} user_id
+ * @param {*} user_id
  */
 export async function createPost(post, user_id) {
   const { rows } = await pool.query(
@@ -58,7 +58,7 @@ export async function createPost(post, user_id) {
  * @param {string} post.title
  * @param {string} post.blurb
  * @param {string} post.content
- * @param {number} user_id
+ * @param {*} user_id
  */
 export async function updatePost(post_id, post, user_id) {
   const fields = Object.keys(post);
@@ -80,7 +80,7 @@ export async function updatePost(post_id, post, user_id) {
  * Deletes a post by their id from the posts table
  *
  * @param {number} post_id
- * @param {number} user_id
+ * @param {*} user_id
  */
 export async function deletePost(post_id, user_id) {
   await pool.query("DELETE FROM posts WHERE post_id=$1 AND user_id=$2", [
