@@ -1,4 +1,4 @@
-import "dotenv/config.js";
+import "dotenv/config";
 
 const env = {
   port: Number(process.env.PORT || process.env.APP_PORT || 3000),
