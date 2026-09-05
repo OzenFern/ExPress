@@ -1,6 +1,7 @@
 /**
  * Renders a custom 404 page for 404 status code
  *
+ * @param req
  * @param {*} res - response from the server
  * @returns
  */
