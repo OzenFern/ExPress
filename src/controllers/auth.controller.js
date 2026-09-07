@@ -12,13 +12,21 @@ export async function register(req, res, next) {
   try {
     const { email, password } = req.body;
     const user = await registerUser(email, password);
-    if (!user) return res.redirect("/auth/register");
+    if (!user) {
+      req.flash("error", "This email is already registered.");
+      return res.redirect("/auth/register");
+    }
 
     req.login(user, (err) => {
       if (err) return next(err);
       return res.redirect("/posts");
     });
   } catch (err) {
+    if (err.code === "23505") {
+      req.flash("error", "This email is already registered.");
+      return res.redirect("/auth/register");
+    }
+
     next(err);
   }
 }

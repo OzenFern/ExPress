@@ -1,9 +1,15 @@
 import bcrypt from "bcryptjs";
-import { createUser } from "../repositories/user.repositories.js";
-import { asyncTryCatch } from "../utils/error.utils.js";
+import {
+  createUser,
+  findUserByEmail,
+} from "../repositories/user.repositories.js";
 
 const saltRounds = 12;
 
-export const registerUser = asyncTryCatch(async (email, password) =>
-  createUser(email, await bcrypt.hash(password, saltRounds)),
-);
+export async function registerUser(email, password) {
+  const existingUser = await findUserByEmail(email);
+  if (existingUser) return null;
+
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
+  return createUser(email, hashedPassword);
+}
