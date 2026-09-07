@@ -35,7 +35,7 @@ app.use(helmet());
 app.use(compression());
 app.use(express.static(path.join(__dirname, "../public"), { maxAge: "30d" }));
 app.use(express.urlencoded({ extended: true })); // Parses user data
-app.use(morgan("dev")); // Logs HTTP requests
+app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev")); // Logs HTTP requests
 
 /*
   Set up express-session
